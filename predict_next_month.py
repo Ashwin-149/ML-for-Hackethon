@@ -2,10 +2,16 @@ import joblib
 
 model = joblib.load("models/month_energy_model.pkl")
 
-forecast = model.forecast(steps=1)
+# next month
+forecast_month = model.forecast(steps=1)
 
-print("Predicted Next Month Energy Consumption:", forecast[0])
+print("Predicted Next Month Energy:", forecast_month.iloc[0], "KW")
 
-forecast_yearly = model.forecast(steps=12)
+# next year
+forecast_year = model.forecast(steps=12)
 
-print("Predicted Next Year Energy Consumption:", forecast_yearly[0])
+print("\nNext Year Monthly Forecast:")
+for i, val in enumerate(forecast_year):
+    print(f"Month {i+1}:", val)
+
+print("\nTotal Next Year Energy:", forecast_year.sum(), "KW")

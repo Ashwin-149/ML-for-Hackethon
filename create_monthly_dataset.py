@@ -13,7 +13,7 @@ data['datetime'] = pd.to_datetime(
 )
 
 # Monthly energy consumption
-monthly = data.resample('M', on='datetime')['Global_active_power'].sum()
+monthly = data.resample('ME', on='datetime')['Global_active_power'].sum()
 
 monthly = monthly.reset_index()
 
